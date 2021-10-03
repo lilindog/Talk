@@ -7,6 +7,10 @@
 const { Master } = require("../index");
 const master = new Master({ path: "/dev/ttyAMA2", baudRate: 9600 });
 !void async function () {
+    // 查找总线上的从机
+    console.log(await master.getDeviceList());
+
+    // 轮询从机
     let index = 1;
     while (1) {
         index++;
@@ -14,7 +18,7 @@ const master = new Master({ path: "/dev/ttyAMA2", baudRate: 9600 });
             const { data } = await master.say(address, "hello " + index);
             console.log("从机" + address + "：" + data);
         }
-        // await sleep(10);
+        await sleep(10);
     }
 
 }();
