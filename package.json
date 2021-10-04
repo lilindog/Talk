@@ -8,7 +8,7 @@
     "preinstall": "node scripts/init-githooks.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "lilindog<lilin@lilin.site>",
   "license": "ISC",
   "dependencies": {
     "serialport": "^9.2.4"
