@@ -1,7 +1,7 @@
 "use strict";
 
 const 
-    Searial  = require("serialport"),
+    Searial = require("serialport"),
     Protocol = require("./Protocol.class");
 
 class Master {
@@ -13,10 +13,10 @@ class Master {
         this.#protocol = new Protocol(new Searial(path, { baudRate }));
     }
     async getDeviceList () {
-        if (this.isBusy) throw "总线忙！"
+        if (this.isBusy) throw "总线忙！";
         this.isBusy = true;
         const 
-            addressLen = parseInt("01111111", 2),
+            addressLen   = parseInt("01111111", 2),
             slaveAddress = [];
         for (let i = 1; i < addressLen; i++) {
             if (
@@ -35,7 +35,7 @@ class Master {
     async say (address, msg = "") {
         if (this.isBusy) throw "总线忙！";
         this.isBusy = true;
-        let resolve, reject, p = new Promise((res, rej) => (resolve = res, reject = rej));
+        let resolve, p = new Promise(res => resolve = res);
         this.#protocol.once("data", data => {
             this.isBusy = false;
             resolve(data);
@@ -45,7 +45,7 @@ class Master {
             this.isBusy = false;
             resolve(false);
         }, this.#waitTime);
-        return  p;
+        return p;
     }
 }
 

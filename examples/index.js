@@ -1,6 +1,6 @@
 "use strict";
 
-const { Slave } = require("../index");
+const { Slave } = require("../src/index");
 const slave = new Slave({ path: "COM4", baudRate: 9600, address: 0x03 });
 slave.on("say", (data, reply) => {
     console.log("say:");
@@ -8,7 +8,7 @@ slave.on("say", (data, reply) => {
     reply("我是从机pc，现在时间：" + new Date().toLocaleTimeString());
 });
 
-// const { Master, Slave } = require("../index");
+// const { Master, Slave } = require("../src/index");
 // const master = new Master({ path: "COM4", baudRate: 9600 });
 // // 轮询所有从几状态
 // !void async function () {

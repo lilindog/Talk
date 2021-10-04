@@ -7,7 +7,7 @@
 
 const 
     Master = require("./lib/Master.class"),
-    Slave  = require("./lib/Slave.class");
+    Slave = require("./lib/Slave.class");
 
 module.exports = Object.create(null, {
     Master: {
