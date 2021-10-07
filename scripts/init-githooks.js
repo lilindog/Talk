@@ -7,7 +7,7 @@ const
     path = require("path");
 
 !void function () {
-    (process.env.INIT_CWD || "").endsWith(process.env.npm_package_name) && main();
+    (process.env.INIT_CWD || "").toLowerCase().endsWith(process.env.npm_package_name.toLowerCase()) && main();
 }();
 
 function main () {
